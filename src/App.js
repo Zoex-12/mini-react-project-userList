@@ -1,5 +1,6 @@
 import "./App.css";
 import { UserForm } from "./Components/UserForm";
+import { UserTable } from "./Components/UserTable";
 
 function App() {
   return (
@@ -9,8 +10,9 @@ function App() {
        justify-center items-center flex-col"
       >
         <h1 className="text-4xl font-bold mb-4">User List</h1>
-        <div className="container h-150 w-120 border-3 rounded-md p-4">
+        <div className="container h-160 w-140 flex flex-col items-center rounded-md p-4 bg-white text-black shadow-2xl ">
           <UserForm />
+          <UserTable />
         </div>
       </div>
     </>

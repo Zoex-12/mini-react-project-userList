@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .wrapper {
   background: linear-gradient(90deg, #0f23fa 0%, #0f85fa 50%, #0fe7fa 100%);
 }
