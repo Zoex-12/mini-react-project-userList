@@ -1,4 +1,6 @@
-export const UserTable = () => {
+import { FemaleAvatar, MaleAvatar } from "./Avatar";
+
+export const UserTable = ({ list }) => {
   return (
     <>
       <div className="relative overflow-x-auto bg-neutral-primary shadow-lg rounded-md mt-6 p-8 w-full bg-white">
@@ -10,6 +12,12 @@ export const UserTable = () => {
                 className="px-6 py-3 bg-neutral-secondary-soft font-medium"
               >
                 #
+              </th>
+              <th
+                scope="col"
+                className="px-6 py-3 bg-neutral-secondary-soft font-medium"
+              >
+                Avatar
               </th>
               <th scope="col" className="px-6 py-3 font-medium">
                 Name
@@ -23,58 +31,30 @@ export const UserTable = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-b border-gray-400">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
-              >
-                1
-              </th>
-              <td className="px-6 py-4">Silver</td>
-              <td className="px-6 py-4 bg-neutral-secondary-soft">Laptop</td>
-            </tr>
-            <tr className="border-b border-gray-400">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
-              >
-                2
-              </th>
-              <td className="px-6 py-4">White</td>
-              <td className="px-6 py-4 bg-neutral-secondary-soft">Laptop PC</td>
-            </tr>
-            <tr className="border-b border-gray-400">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
-              >
-                3
-              </th>
-              <td className="px-6 py-4">Black</td>
-              <td className="px-6 py-4 bg-neutral-secondary-soft">
-                Accessories
-              </td>
-            </tr>
-            <tr className="border-b border-gray-400">
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
-              >
-                4
-              </th>
-              <td className="px-6 py-4">Gray</td>
-              <td className="px-6 py-4 bg-neutral-secondary-soft">Phone</td>
-            </tr>
-            <tr>
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
-              >
-                5
-              </th>
-              <td className="px-6 py-4">Red</td>
-              <td className="px-6 py-4 bg-neutral-secondary-soft">Wearables</td>
-            </tr>
+            {list.map(({ gender, name }, i) => {
+              return (
+                <tr key={i} className="border-b border-gray-400">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-heading whitespace-nowrap bg-neutral-secondary-soft"
+                  >
+                    {i + 1}
+                  </th>
+                  <td className="px-6 py-4">
+                    {gender === "male" ? <MaleAvatar /> : <FemaleAvatar />}
+                  </td>
+                  <td
+                    style={{ color: gender === "male" ? "blue" : "pink" }}
+                    className="px-6 py-4 "
+                  >
+                    {name}
+                  </td>
+                  <td className="px-6 py-4 bg-neutral-secondary-soft">
+                    {gender}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

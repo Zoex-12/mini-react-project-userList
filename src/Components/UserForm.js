@@ -1,7 +1,24 @@
-export const UserForm = () => {
+import { useState } from "react";
+
+export const UserForm = ({ func }) => {
+  const [user, setUser] = useState({});
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    func(user);
+  };
+
   return (
     <>
       <form
+        onSubmit={handleOnSubmit}
         action=""
         className="grid grid-cols-1 md:grid-cols-12 gap-2 w-80 md:w-full shadow-lg p-3 mt-2 bg-white"
       >
@@ -11,10 +28,11 @@ export const UserForm = () => {
               name="gender"
               required
               className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+              onChange={handleOnChange}
             >
-              <option>Gender</option>
-              <option>Canada</option>
-              <option>Mexico</option>
+              <option value="">Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
             <svg
               viewBox="0 0 16 16"
@@ -39,6 +57,7 @@ export const UserForm = () => {
             className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
             placeholder="User name"
             required
+            onChange={handleOnChange}
           />
         </div>
         <div className="md:col-span-3 grid   mt-2">
