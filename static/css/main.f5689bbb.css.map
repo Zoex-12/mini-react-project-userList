@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.f5689bbb.css","mappings":"AAAA,EACE,qBACF,CAEA,SACE,6DACF","sources":["App.css"],"sourcesContent":["* {\n  box-sizing: border-box;\n}\n\n.wrapper {\n  background: linear-gradient(90deg, #0f23fa 0%, #0f85fa 50%, #0fe7fa 100%);\n}\n"],"names":[],"sourceRoot":""}
